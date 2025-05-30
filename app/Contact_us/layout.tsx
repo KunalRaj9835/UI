@@ -1,3 +1,5 @@
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 export default function ContactUs({
   children,
 }: {
@@ -6,7 +8,9 @@ export default function ContactUs({
   return (
     <div className="ContactUs-layout">
       {/* Any pricing-specific wrapper elements */}
+      <Navbar />
       {children}
+      <Footer />
     </div>
   );
 }

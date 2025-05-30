@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
 import VideoSection from "@/components/VideoSection";
 import FAQSection from "@/components/FAQSection";
+import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -79,6 +80,7 @@ export default function HomePage() {
       <BackgroundAnimation />
       {/* Your homepage content goes here */}
       <main>
+        <Navbar />
         <section className="hero-section">
           <Hero />
           {/* Hero content */}
@@ -86,6 +88,7 @@ export default function HomePage() {
          <ProductCard />
         <VideoSection />
         <FAQSection />
+        <Footer />
         {/* Other homepage sections */}
       </main>
     </>
