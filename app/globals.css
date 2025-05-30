@@ -1,0 +1,345 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --background-dark: #0F1209;
+  --text-light: #ffffff;
+  --accent-green: #a4ff00;
+  --menu-bg-dark: #1A1D14;
+  --section-bg-dark: #141810;
+  --border-dark: #2A2E22;
+}
+
+body {
+  background: #0F1209;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Animated background blobs */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 50vw;
+  height: 50vh;
+  background: radial-gradient(circle, rgba(12, 247, 79, 0.3), transparent);
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -10;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+body::before {
+  top: auto;
+  bottom: -20%;
+  left: -20%;
+  right: auto;
+  animation: blobLeftToCenter 12s ease-in-out infinite;
+}
+
+body::after {
+  top: -20%;
+  right: -20%;
+  bottom: auto;
+  left: auto;
+  animation: blobRightToCenter 12s ease-in-out infinite;
+}
+
+@keyframes blobLeftToCenter {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(50vw, -30vh) scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes blobRightToCenter {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50vw, 30vh) scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* Navbar Styles */
+.navbar {
+  max-width: 1200px;
+  margin: 41px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 15px;
+  position: relative;
+  z-index: 100;
+  background: var(--background-dark); /* Solid dark background */
+  border: 1px solid var(--border-dark);
+}
+
+.logo {
+  margin-left: 50px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #a4ff00;
+}
+
+/* Products Dropdown */
+.products-dropdown {
+  position: relative;
+}
+
+.products-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.products-button svg {
+  transition: transform 0.3s ease;
+}
+
+.products-button.active svg {
+  transform: rotate(180deg);
+}
+
+.products-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  background: #0F1209;
+  background: var(--background-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  padding: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  z-index: 1000;
+}
+
+.products-menu.active {
+  display: grid;
+}
+
+.menu-section {
+  background: var(--section-bg-dark); 
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.menu-section h3 {
+  color: #F5F5F5;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #F8FFEB;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item h4 {
+  color: #F5F5F5;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.menu-item p {
+  color: #F5F5F5;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Auth Section */
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Theme Toggle */
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle {
+  display: none;
+}
+
+.toggle-label {
+  display: block;
+  width: 40px;
+  height: 22px;
+  background: white;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: background 0.3s;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: #333;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle-slider::before {
+  content: "🌙";
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.theme-toggle:checked + .toggle-label {
+  background: #333;
+}
+
+.theme-toggle:checked + .toggle-label .toggle-slider {
+  left: 20px;
+  background: white;
+}
+
+.theme-toggle:checked + .toggle-label .toggle-slider::before {
+  content: "☀️";
+}
+
+/* Light Mode */
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
+.light-mode .nav-links a,
+.light-mode .products-button {
+  color: black;
+}
+
+.light-mode .nav-links a:hover {
+  color: #a4ff00;
+}
+
+.light-mode .products-menu {
+  background: white;
+  border-color: #e5e5e5;
+}
+
+.light-mode .menu-section {
+  background: #f8f9fa;
+}
+
+.light-mode .navbar {
+  background: #ffffff; /* Solid white background for light mode */
+  border: 1px solid #e5e5e5;
+}
+
+.light-mode .toggle-label {
+  background: #333333;
+  border-color: #666;
+}
+
+.light-mode .toggle-slider {
+  background: #ffffff;
+}
+
+.theme-toggle:checked + .toggle-label .toggle-slider {
+  left: 20px;
+  background: #ffffff;
+}
+
+.light-mode .theme-toggle:checked + .toggle-label .toggle-slider {
+  background: #333333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
+    margin: 20px auto 0;
+  }
+  
+  .logo {
+    margin-left: 0;
+  }
+  
+  .nav-links {
+    gap: 20px;
+  }
+  
+  .products-menu {
+    width: 90vw;
+    grid-template-columns: 1fr;
+  }
+}
+
+
