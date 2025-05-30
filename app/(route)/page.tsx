@@ -1,5 +1,10 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Hero from "@/components/Hero";
+import ProductCard from "@/components/ProductCard";
+import VideoSection from "@/components/VideoSection";
+import FAQSection from "@/components/FAQSection";
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Frontpage',
@@ -67,4 +72,22 @@ const BackgroundAnimation: React.FC = () => {
   );
 };
 
-export default BackgroundAnimation;
+
+export default function HomePage() {
+  return (
+    <>
+      <BackgroundAnimation />
+      {/* Your homepage content goes here */}
+      <main>
+        <section className="hero-section">
+          <Hero />
+          {/* Hero content */}
+        </section>
+         <ProductCard />
+        <VideoSection />
+        <FAQSection />
+        {/* Other homepage sections */}
+      </main>
+    </>
+  );
+}

@@ -195,6 +195,7 @@ const toggleFAQ: ToggleFAQ = (faqId) => {
           max-width: 800px;
           position: relative;
           padding: 0 20px;
+          z-index: 100;
         }
 
         :global(.faq-box) {
@@ -215,6 +216,7 @@ const toggleFAQ: ToggleFAQ = (faqId) => {
           transition: all 0.3s ease-in-out;
           opacity: 1;
           transform: translateY(0);
+          z-index: 102;
         }
 
         :global(.faq):hover {
@@ -256,6 +258,7 @@ const toggleFAQ: ToggleFAQ = (faqId) => {
           font-size: 40px;
           color: #FFFFFF;
           margin-bottom: 20px;
+          z-index: 101;
         }
 
         :global(.support-container) #desc {
