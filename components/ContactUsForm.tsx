@@ -41,17 +41,19 @@ export default function ContactUsForm() {
       <style jsx>{`
         .contact-container {
           min-height: 100vh;
-          background: var(--background-dark);
+          background: transparent; /* Changed from var(--background-dark) to transparent */
           color: var(--text-light);
           position: relative;
-          z-index: 10;
+          z-index: 1; /* Reduced from z-index: 10 to z-index: 1 */
           padding-top: 120px;
-          transition: background-color 0.3s ease, color 0.3s ease;
+          transition: color 0.3s ease;
+          opacity: 1; /* Reduced opacity for a more subtle effect */
+          background:transparent; /* Keep background transparent */
         }
 
         /* Light mode overrides */
         :global(.light-mode) .contact-container {
-          background: #ffffff;
+          background: transparent; /* Keep transparent in light mode too */
           color: #000000;
         }
 
@@ -63,6 +65,8 @@ export default function ContactUsForm() {
           flex-direction: column;
           gap: 3rem;
           align-items: center;
+          position: relative;
+          z-index: 2;
         }
 
         @media (min-width: 1024px) {
