@@ -1,8 +1,8 @@
 
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 import './Hero.css';
 
 const Hero = ({
@@ -30,7 +30,8 @@ const Hero = ({
           onClick={handleButtonClick}
           type="button"
         >
-          {buttonText}
+          <span>{buttonText}</span>
+
         </button>
       </div>
       
