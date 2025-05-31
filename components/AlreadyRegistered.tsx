@@ -1,39 +1,7 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const ThankYouPage: React.FC = () => {
-  useEffect(() => {
-    for (let i = 0; i < 25; i++) {
-      createSparkle();
-    }
-
-    function createSparkle() {
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-
-      const size = 6 + Math.random() * 8; // 6px to 14px
-      sparkle.style.width = `${size}px`;
-      sparkle.style.height = `${size}px`;
-
-      const x = Math.random() * (window.innerWidth - size);
-      const y = Math.random() * (window.innerHeight - size);
-      sparkle.style.left = `${x}px`;
-      sparkle.style.top = `${y}px`;
-
-      const delay = Math.random() * 5;
-      const duration = 2 + Math.random() * 3; // 2s to 5s
-      sparkle.style.animationDelay = `${delay}s`;
-      sparkle.style.animationDuration = `${duration}s`;
-
-      document.body.appendChild(sparkle);
-
-      setTimeout(() => {
-        sparkle.remove();
-        createSparkle();
-      }, (duration + delay) * 1000);
-    }
-  }, []);
-
+const AlreadyRegistered: React.FC = () => {
   return (
     <div className="thank-you-container">
       <div className="thank-you-content">
@@ -44,7 +12,7 @@ const ThankYouPage: React.FC = () => {
         />
         <h1 className="thank-you-title">Already On The Waitlist</h1>
         <p className="thank-you-message">
-          This email address is already registered on our waitlist.We'll notify you as soon as TradeVed launches. 
+          This email address is already registered on our waitlist. We'll notify you as soon as TradeVed launches. 
           Thank you for your continued interest!
         </p>
         <a href="/" className="continue-btn">
@@ -64,14 +32,16 @@ const ThankYouPage: React.FC = () => {
           justify-content: center;
           align-items: center;
           position: relative;
-          background: #000;
+          background: transparent;
+          z-index: 100;
         }
 
         .thank-you-content {
           text-align: center;
           padding: 2rem;
           max-width: 600px;
-          z-index: 1;
+          z-index: 101;
+          position: relative;
         }
 
         .thank-you-title {
@@ -79,12 +49,14 @@ const ThankYouPage: React.FC = () => {
           font-size: clamp(2.5rem, 8vw, 4rem);
           margin-bottom: 1.5rem;
           font-weight: 700;
+          z-index: 101;
         }
 
         .thank-you-message {
           font-size: clamp(1rem, 3vw, 1.2rem);
           margin-bottom: 3rem;
           line-height: 1.6;
+          z-index: 101;
         }
 
         .continue-btn {
@@ -99,7 +71,7 @@ const ThankYouPage: React.FC = () => {
           cursor: pointer;
           border: none;
           border-radius: 6px;
-          z-index: 1;
+          z-index: 101;
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
           overflow: hidden;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -134,42 +106,48 @@ const ThankYouPage: React.FC = () => {
         .thank-you-logo {
           margin-bottom: 3rem;
           max-width: 160px;
+          z-index: 101;
         }
 
-        .sparkle {
-          position: fixed;
-          border-radius: 50%;
-          background-color: #caff00;
-          box-shadow:
-            0 0 10px 2px rgba(202, 255, 0, 0.8),
-            0 0 20px 5px rgba(202, 255, 0, 0.5),
-            0 0 30px 10px rgba(202, 255, 0, 0.3);
-          opacity: 0;
-          z-index: -1;
-          pointer-events: none;
-          animation-name: sparkle;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
+        /* Light mode support */
+        :global(.light-mode) .thank-you-container {
+          background: transparent;
+          color: #333;
+          z-index: 100;
         }
 
-        @keyframes sparkle {
-          0% {
-            opacity: 0;
-            transform: scale(0.5) rotate(0deg);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.5) rotate(180deg);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.5) rotate(360deg);
-          }
+        :global(.light-mode) .thank-you-title {
+          color: #333;
+          z-index: 101;
+        }
+
+        :global(.light-mode) .thank-you-message {
+          color: #666;
+          z-index: 101;
+        }
+
+        :global(.light-mode) .continue-btn {
+          background: #f8f9fa;
+          color: #333;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+          z-index: 101;
+        }
+
+        :global(.light-mode) .continue-btn::before {
+          background: radial-gradient(179.26% 179.26% at 16.76% 0%, #A4E400 0%, #7CB342 100%);
+        }
+
+        :global(.light-mode) .continue-btn:hover,
+        :global(.light-mode) .continue-btn:focus {
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        :global(.light-mode) .continue-btn:active {
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
       `}</style>
     </div>
   );
 };
 
-export default ThankYouPage;
-
+export default AlreadyRegistered;
