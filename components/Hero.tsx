@@ -1,8 +1,9 @@
-// components/Hero/Hero.tsx
+
 'use client';
 
 import React from 'react';
 import Image from 'next/image';
+import './Hero.css';
 
 const Hero = ({
   title = "Unified platform for systematic trading and learning",

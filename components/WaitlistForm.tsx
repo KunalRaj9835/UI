@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'; // Add this import
 import './WaitlistForm.css';
 
 interface FormData {
@@ -19,6 +20,7 @@ interface Question {
 }
 
 const WaitlistForm: React.FC = () => {
+  const router = useRouter(); // Add this line
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -111,19 +113,26 @@ const WaitlistForm: React.FC = () => {
     try {
       console.log('Submitting form data:', formData);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
       // Replace with your actual API endpoint
-      // const response = await fetch('/.netlify/functions/addToWaitlist', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
+      const response = await fetch('/.netlify/functions/addToWaitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        // Navigate to thank you page on success
+        router.push('./thank-you'); // Change this to your thank you page route
+      } else if (response.status === 409) {
+        // Navigate to already registered page if user already exists (409 Conflict)
+        router.push('./already-registered'); // Change this to your already registered page route
+      } else {
+        throw new Error('Submission failed');
+      }
       
-      alert('Form submitted successfully!');
     } catch (error) {
       console.error('Error submitting form:', error);
+      // You can also create an error page and navigate there
       alert('Failed to submit form. Please try again later.');
     } finally {
       setIsSubmitting(false);
