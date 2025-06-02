@@ -124,21 +124,25 @@ const Navbar: React.FC = () => {
         :root {
           --bg-primary: #000000;
           --bg-secondary: rgba(20, 25, 15, 0.9);
+          --bg-dropdown: rgba(26, 26, 26, 1);
+          --bg-dropdown-section: rgba(40, 40, 40, 1);
           --text-primary: #ffffff;
           --text-secondary: rgba(245, 245, 245, 0.7);
           --accent-color: #a4ff00;
           --border-color: rgba(255, 255, 255, 0.1);
-          --hover-bg: rgba(255, 255, 255, 0.05);
+          --hover-bg: rgba(255, 255, 255,0.05);
         }
 
         :root.light-mode {
           --bg-primary: #ffffff;
           --bg-secondary: rgba(255, 255, 255, 0.9);
+          --bg-dropdown: rgba(255, 255, 255, 1);
+          --bg-dropdown-section: rgba(248, 248, 248, 1);
           --text-primary: #333333;
           --text-secondary: rgba(51, 51, 51, 0.7);
           --accent-color: #a4ff00;
           --border-color: rgba(0, 0, 0, 0.1);
-          --hover-bg: rgba(0, 0, 0, 0.05);
+          --hover-bg: rgba(0, 0, 0,0.05);
         }
 
         /* Global Styles */
@@ -255,27 +259,28 @@ const Navbar: React.FC = () => {
           left: 50%;
           transform: translateX(-50%);
           width: 900px;
-          background: var(--bg-secondary);
-          backdrop-filter: blur(20px);
+          background: rgb(26,26,26) !important;
           border: 1px solid var(--border-color);
+          backdrop-filter: none !important;
           border-radius: 16px;
           padding: 24px;
           grid-template-columns: repeat(3, 1fr);
           gap: 24px;
-          z-index: 1000;
+          z-index: 1001;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         :root.light-mode .products-menu {
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
+           background: rgb(255, 255, 255) !important;
+          }
 
         .products-menu.active {
           display: grid;
         }
 
         .menu-section {
-          background: var(--hover-bg);
+          background: var(--bg-dropdown-section);
           padding: 20px;
           border-radius: 12px;
           border: 1px solid var(--border-color);

@@ -81,10 +81,10 @@ export default function HomePage() {
       {/* Your homepage content goes here */}
       <main>
         <Navbar />
-        <section className="hero-section">
+     
           <Hero />
           {/* Hero content */}
-        </section>
+   
          <ProductCard />
         <VideoSection />
         <FAQSection />
