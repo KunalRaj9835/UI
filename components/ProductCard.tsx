@@ -88,6 +88,7 @@ const TradingToolsSection: React.FC = () => {
 
   return (
     <section className="tools">
+      <div className="tools-align">
       <h2>Tools to Trade Smarter</h2>
       <div className="tools-content">
         <div className="tabs">
@@ -110,7 +111,7 @@ const TradingToolsSection: React.FC = () => {
           Built to support traders at every level.
         </p>
       </div>
-      
+      </div>
       <div className="product-grid" key={fadeInKey}>
         {filteredProducts.map((product) => (
           <div
@@ -143,12 +144,15 @@ const TradingToolsSection: React.FC = () => {
 
       <style jsx>{`
         .tools {
-          margin-top: 7rem;
+          margin-top: 5.5rem;
           z-index: 100;
         }
 
-        .tools-content {
-          margin-left: 14.5rem;
+        .tools-align {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: left;
         }
 
         .tools h2 {
@@ -156,7 +160,6 @@ const TradingToolsSection: React.FC = () => {
           font-weight: 600;
           font-size: 40px;
           line-height: 100%;
-          margin-left: 14.5rem;
           color: white;
         }
 

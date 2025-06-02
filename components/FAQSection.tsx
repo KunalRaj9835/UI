@@ -82,14 +82,15 @@ const toggleFAQ: ToggleFAQ = (faqId) => {
         .faq-container {
           max-width: 1050px;
           width: 100%;
-          margin: 6rem auto;
+          margin: 4rem auto;
           padding: 0 20px;
           z-index: 100;
+          position: relative;
         }
 
         :global(.faq-container) h2 {
-          font-family: 'Raleway', sans-serif;
-          font-size: 30px;
+          
+          font-size: 25px;
           font-weight: 700;
           margin-bottom: 10px;
           margin-left: 2rem;
@@ -185,7 +186,7 @@ const toggleFAQ: ToggleFAQ = (faqId) => {
         :global(.arrow) {
           transition: transform 0.3s ease-in-out;
           font-size: 18px;
-          color: #9BEC00;
+          
         }
 
         :global(.support) {
